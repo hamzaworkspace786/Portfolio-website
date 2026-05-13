@@ -1,26 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Refined Color Palette */
+  --color-coral: #ff5e3a; /* More vibrant */
+  --color-golden: #ffb400; /* More classic gold */
+  --color-dark: #111111;
+  --color-purple: #8b5cf6;
+  
+  --color-pink-bg: #ffe4e9;
+  --color-mint-bg: #e0f2f1;
+  --color-yellow-bg: #fff9c4;
+  --color-lavender-bg: #f3e5f5;
+  --color-cream: #fafafa;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-dancing: "Dancing Script", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
 }
 
 body {
-  background: var(--background);
+  font-family: "Poppins", sans-serif;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+/* Fix for congested layouts */
+section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
