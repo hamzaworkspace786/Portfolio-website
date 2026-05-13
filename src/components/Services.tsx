@@ -57,14 +57,12 @@ export default function Services() {
                             animate={inView ? 'show' : 'hidden'}
                             whileHover={{ y: -8 }}
                             transition={{ duration: 0.3 }}
-                            className={`relative flex flex-col p-8 card group cursor-default
-                ${i === 1 ? 'md:-mt-6 bg-[#F5C518] border-[#F5C518]' : 'bg-[#161616]'}
-              `}
+                            className="relative flex flex-col p-8 card group cursor-default bg-[#161616]"
                         >
                             {/* Popular badge (middle card) */}
                             {i === 1 && (
                                 <div className="absolute top-0 right-8 -translate-y-1/2">
-                                    <span className="bg-[#0A0A0A] text-[#F5C518] font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5">
+                                    <span className="bg-[#0A0A0A] text-[#F5C518] font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 border border-[#F5C518]/20">
                                         Most Popular
                                     </span>
                                 </div>
@@ -72,20 +70,18 @@ export default function Services() {
 
                             {/* Icon */}
                             <div
-                                className={`text-3xl mb-6 w-14 h-14 flex items-center justify-center
-                  ${i === 1 ? 'bg-[#0A0A0A]/10' : 'bg-[#F5C518]/10 border border-[#F5C518]/20'}
-                `}
+                                className="text-3xl mb-6 w-14 h-14 flex items-center justify-center bg-[#F5C518]/10 border border-[#F5C518]/20"
                             >
                                 {service.icon}
                             </div>
 
                             {/* Title + description */}
                             <h3
-                                className={`font-display text-4xl mb-3 ${i === 1 ? 'text-[#0A0A0A]' : 'text-[#F5F5F0]'}`}
+                                className="font-display text-4xl mb-3 text-[#F5F5F0]"
                             >
                                 {service.title}
                             </h3>
-                            <p className={`text-sm leading-relaxed mb-6 flex-1 ${i === 1 ? 'text-[#0A0A0A]/70' : 'text-[#A0A0A0]'}`}>
+                            <p className="text-sm leading-relaxed mb-6 flex-1 text-[#A0A0A0]">
                                 {service.description}
                             </p>
 
@@ -95,10 +91,10 @@ export default function Services() {
                                     <li key={f} className="flex items-center gap-2">
                                         <Check
                                             size={13}
-                                            className={`flex-shrink-0 ${i === 1 ? 'text-[#0A0A0A]' : 'text-[#F5C518]'}`}
+                                            className="flex-shrink-0 text-[#F5C518]"
                                             strokeWidth={3}
                                         />
-                                        <span className={`text-sm ${i === 1 ? 'text-[#0A0A0A]/80' : 'text-[#A0A0A0]'}`}>
+                                        <span className="text-sm text-[#A0A0A0]">
                                             {f}
                                         </span>
                                     </li>
@@ -106,21 +102,19 @@ export default function Services() {
                             </ul>
 
                             {/* Pricing row */}
-                            <div className={`flex items-center justify-between pt-6 border-t
-                ${i === 1 ? 'border-[#0A0A0A]/20' : 'border-[#2A2A2A]'}
-              `}>
+                            <div className="flex items-center justify-between pt-6 border-t border-[#2A2A2A]">
                                 <div className="flex items-center gap-1.5">
-                                    <DollarSign size={14} className={i === 1 ? 'text-[#0A0A0A]' : 'text-[#F5C518]'} />
-                                    <span className={`font-display text-3xl ${i === 1 ? 'text-[#0A0A0A]' : 'text-[#F5F5F0]'}`}>
+                                    <DollarSign size={14} className="text-[#F5C518]" />
+                                    <span className="font-display text-3xl text-[#F5F5F0]">
                                         {service.startingPrice}
                                     </span>
-                                    <span className={`text-xs font-mono ${i === 1 ? 'text-[#0A0A0A]/60' : 'text-[#666]'}`}>
+                                    <span className="text-xs font-mono text-[#666]">
                                         /starting
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    <Clock size={12} className={i === 1 ? 'text-[#0A0A0A]/60' : 'text-[#666]'} />
-                                    <span className={`font-mono text-[11px] ${i === 1 ? 'text-[#0A0A0A]/60' : 'text-[#666]'}`}>
+                                    <Clock size={12} className="text-[#666]" />
+                                    <span className="font-mono text-[11px] text-[#666]">
                                         {service.deliveryDays}d delivery
                                     </span>
                                 </div>
