@@ -1,89 +1,150 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { MapPin, GraduationCap, Briefcase, Download } from 'lucide-react'
+import { PERSONAL } from '@/lib/data'
+
+const facts = [
+    { icon: MapPin, label: 'Location', value: 'Okara, Punjab, Pakistan' },
+    { icon: GraduationCap, label: 'Education', value: 'BSIT — University of Okara' },
+    { icon: Briefcase, label: 'Experience', value: '6–12 months (active)' },
+]
+
+const fadeUp = (delay = 0) => ({
+    hidden: { opacity: 0, y: 40 },
+    show: {
+        opacity: 1, y: 0,
+        transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
+    },
+})
 
 export default function About() {
-  const highlights = [
-    "Expert UI/UX Design",
-    "Modern Web Development",
-    "Brand Identity & Strategy",
-    "Creative Problem Solving"
-  ];
+    const ref = useRef<HTMLElement>(null)
+    const inView = useInView(ref, { once: true, margin: '-100px' })
 
-  return (
-    <section id="about" className="bg-cream">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          
-          {/* Left: Visual Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="relative z-10 rounded-[3rem] overflow-hidden bg-dark aspect-[4/5] flex items-center justify-center p-12">
-              <div className="text-center">
-                 <div className="w-32 h-32 rounded-full bg-golden/20 flex items-center justify-center mx-auto mb-8 border border-golden/30">
-                   <div className="w-20 h-20 rounded-full bg-golden flex items-center justify-center text-dark font-black text-4xl">SH</div>
-                 </div>
-                 <h3 className="text-white text-3xl font-bold mb-4 italic">"Design is intelligence made visible."</h3>
-                 <p className="text-white/40 font-medium tracking-[0.2em] uppercase">Steve Henriques</p>
-              </div>
-            </div>
+    return (
+        <section id="about" ref={ref} className="relative overflow-hidden bg-[#0A0A0A]">
+            {/* ── Yellow diagonal top accent ── */}
+            <div
+                className="absolute top-0 left-0 w-full h-[140px] bg-[#F5C518] -z-0"
+                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 40%, 0 100%)' }}
+                aria-hidden
+            />
 
-            {/* Decorative elements that don't overlap text */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-coral/10 rounded-full blur-3xl -z-10" />
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-golden/10 rounded-full blur-3xl -z-10" />
-          </motion.div>
+            <div className="container relative z-10 section-py pt-[120px]">
+                {/* ── Section label ── */}
+                <motion.div
+                    variants={fadeUp(0)}
+                    initial="hidden"
+                    animate={inView ? 'show' : 'hidden'}
+                    className="mb-16"
+                >
+                    <p className="section-label">About Me</p>
+                    <h2 className="section-title">
+                        Who I<br />
+                        <span className="text-[#F5C518]">Am.</span>
+                    </h2>
+                </motion.div>
 
-          {/* Right: Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-coral font-bold tracking-[0.3em] uppercase text-sm mb-4 block">About Myself</span>
-            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight text-dark">
-              Transforming Ideas Into <span className="text-coral italic">Digital Reality</span>
-            </h2>
-            
-            <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-              With over 5 years of experience in the industry, I specialize in creating seamless digital experiences that resonate with users. My approach blends technical expertise with creative intuition.
-            </p>
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    {/* ── Left — photo placeholder ── */}
+                    <motion.div
+                        variants={fadeUp(0.1)}
+                        initial="hidden"
+                        animate={inView ? 'show' : 'hidden'}
+                        className="relative"
+                    >
+                        {/* Photo container */}
+                        <div className="relative">
+                            {/* Decorative yellow border */}
+                            <div className="absolute -top-4 -left-4 w-full h-full border-2 border-[#F5C518] z-0" />
+                            <div className="relative z-10 bg-[#161616] aspect-[4/5] overflow-hidden">
+                                {/* 
+                  Replace the div below with:
+                  <Image src="/your-photo.jpg" alt="Your Name" fill className="object-cover" />
+                */}
+                                <div className="w-full h-full flex items-center justify-center flex-col gap-4 text-[#2A2A2A]">
+                                    <div className="w-24 h-24 rounded-full bg-[#2A2A2A] flex items-center justify-center">
+                                        <span className="font-display text-5xl text-[#F5C518]">
+                                            {PERSONAL.name.charAt(0)}
+                                        </span>
+                                    </div>
+                                    <p className="font-mono text-xs tracking-widest uppercase text-[#444]">
+                                        Add your photo here
+                                    </p>
+                                </div>
+                            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-              {highlights.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-golden flex items-center justify-center text-dark">
-                    <CheckCircle2 size={14} strokeWidth={3} />
-                  </div>
-                  <span className="font-bold text-dark/80">{item}</span>
+                            {/* ── Experience badge ── */}
+                            <motion.div
+                                initial={{ scale: 0, rotate: -15 }}
+                                animate={inView ? { scale: 1, rotate: 0 } : {}}
+                                transition={{ delay: 0.5, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] as const }}
+                                className="absolute -bottom-6 -right-6 bg-[#F5C518] text-[#0A0A0A] p-4 z-20"
+                            >
+                                <p className="font-display text-5xl leading-none">6+</p>
+                                <p className="font-mono text-[10px] uppercase tracking-wider mt-1">months<br />experience</p>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+
+                    {/* ── Right — text content ── */}
+                    <motion.div
+                        variants={fadeUp(0.2)}
+                        initial="hidden"
+                        animate={inView ? 'show' : 'hidden'}
+                        className="flex flex-col gap-8"
+                    >
+                        <div>
+                            <p className="text-[#A0A0A0] text-lg leading-relaxed mb-5">
+                                I'm a full-stack web developer from Okara, Pakistan, specializing in{' '}
+                                <span className="text-[#F5C518] font-semibold">React & Next.js</span>. I love
+                                building fast, modern web applications that solve real problems — from sleek
+                                landing pages to complex real-time SaaS products.
+                            </p>
+                            <p className="text-[#A0A0A0] text-lg leading-relaxed">
+                                My flagship project,{' '}
+                                <span className="text-[#F5F5F0] font-semibold">Nexus</span>, is a real-time
+                                collaborative whiteboard SaaS (think Miro/FigJam) built with WebRTC voice chat,
+                                Liveblocks real-time sync, and full authentication — developed as my Final Year
+                                Project at{' '}
+                                <span className="text-[#F5F5F0]">University of Okara</span>.
+                            </p>
+                        </div>
+
+                        {/* ── Facts grid ── */}
+                        <div className="flex flex-col gap-4">
+                            {facts.map(({ icon: Icon, label, value }) => (
+                                <div key={label} className="flex items-center gap-4 border-b border-[#1E1E1E] pb-4">
+                                    <div className="w-9 h-9 bg-[#F5C518]/10 border border-[#F5C518]/20 flex items-center justify-center flex-shrink-0">
+                                        <Icon size={16} className="text-[#F5C518]" />
+                                    </div>
+                                    <div>
+                                        <p className="font-mono text-[10px] uppercase tracking-widest text-[#666] mb-0.5">{label}</p>
+                                        <p className="text-[#F5F5F0] text-sm font-medium">{value}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* ── CTAs ── */}
+                        <div className="flex flex-wrap gap-4 pt-2">
+                            <a href="#contact" className="btn-primary">
+                                <span>Work With Me</span>
+                            </a>
+                            <a
+                                href="/resume.pdf"   /* ← add your CV to /public/resume.pdf */
+                                download
+                                className="btn-outline flex items-center gap-2"
+                            >
+                                <Download size={14} />
+                                Download CV
+                            </a>
+                        </div>
+                    </motion.div>
                 </div>
-              ))}
             </div>
-
-            <motion.div 
-              whileHover={{ x: 10 }}
-              className="flex items-center gap-4 cursor-pointer group"
-            >
-              <div className="w-16 h-16 rounded-full bg-dark flex items-center justify-center text-white group-hover:bg-coral transition-colors">
-                <ArrowRight size={24} />
-              </div>
-              <span className="text-xl font-bold text-dark">Learn More About My Process</span>
-            </motion.div>
-          </motion.div>
-
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    )
 }
-
-// Inline component fix for the ArrowRight missing import
-const ArrowRight = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-  </svg>
-);

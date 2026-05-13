@@ -1,83 +1,130 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-
-const awards = [
-  { name: "WebDesign", color: "text-[#D11149]", logo: "WD" },
-  { name: "colorlib", color: "text-[#888888]", logo: "CL" },
-  { name: "AWWWARDS.", color: "text-[#000000]", logo: "AW" },
-  { name: "Forbes", color: "text-[#000000]", logo: "FB" },
-  { name: "creative", color: "text-[#E94E77]", logo: "CR" },
-];
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { TESTIMONIALS } from '@/lib/data'
 
 export default function Testimonials() {
-  return (
-    <section className="bg-white overflow-hidden py-32">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          
-          {/* Left: Testimonial */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="mb-10 text-golden opacity-20">
-              <Quote size={80} fill="currentColor" />
+    const [current, setCurrent] = useState(0)
+    const ref = useRef<HTMLElement>(null)
+    const inView = useInView(ref, { once: true, margin: '-80px' })
+
+    // Auto-advance
+    useEffect(() => {
+        const id = setInterval(() => {
+            setCurrent(c => (c + 1) % TESTIMONIALS.length)
+        }, 5000)
+        return () => clearInterval(id)
+    }, [])
+
+    const prev = () => setCurrent(c => (c - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
+    const next = () => setCurrent(c => (c + 1) % TESTIMONIALS.length)
+
+    const t = TESTIMONIALS[current]
+
+    return (
+        <section
+            ref={ref}
+            className="relative bg-[#F5C518] section-py overflow-hidden clip-diagonal-both"
+            style={{ marginBlock: '-1px' }}
+        >
+            {/* ── Dot pattern ── */}
+            <div
+                className="absolute inset-0 opacity-15 pointer-events-none"
+                style={{
+                    backgroundImage: 'radial-gradient(circle, #0A0A0A 1px, transparent 1px)',
+                    backgroundSize: '28px 28px',
+                }}
+                aria-hidden
+            />
+
+            <div className="container relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
+                    className="max-w-3xl mx-auto text-center"
+                >
+                    {/* Section label */}
+                    <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#0A0A0A]/50 mb-10">
+                        Client Testimonials
+                    </p>
+
+                    {/* Stars */}
+                    <div className="flex justify-center gap-1 mb-8">
+                        {Array.from({ length: t.rating }).map((_, i) => (
+                            <Star key={i} size={18} className="fill-[#0A0A0A] text-[#0A0A0A]" />
+                        ))}
+                    </div>
+
+                    {/* Quote */}
+                    <AnimatePresence mode="wait">
+                        <motion.blockquote
+                            key={current}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
+                            className="font-display text-[clamp(28px,4vw,52px)] text-[#0A0A0A] leading-[1.1] mb-10"
+                        >
+                            "{t.content}"
+                        </motion.blockquote>
+                    </AnimatePresence>
+
+                    {/* Author */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={`author-${current}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex flex-col items-center gap-1 mb-12"
+                        >
+                            <div className="w-10 h-[2px] bg-[#0A0A0A]/30 mb-3" />
+                            <p className="font-semibold text-[#0A0A0A]">{t.name}</p>
+                            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#0A0A0A]/50">
+                                {t.role} — {t.company}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
+
+                    {/* Controls */}
+                    <div className="flex items-center justify-center gap-6">
+                        <button
+                            onClick={prev}
+                            className="w-10 h-10 border-2 border-[#0A0A0A]/30 flex items-center justify-center hover:bg-[#0A0A0A] hover:border-[#0A0A0A] hover:text-[#F5C518] transition-all duration-300"
+                            aria-label="Previous testimonial"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+
+                        {/* Dots */}
+                        <div className="flex gap-2">
+                            {TESTIMONIALS.map((_, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setCurrent(i)}
+                                    aria-label={`Testimonial ${i + 1}`}
+                                    className={`transition-all duration-300 ${i === current
+                                            ? 'w-8 h-2 bg-[#0A0A0A]'
+                                            : 'w-2 h-2 bg-[#0A0A0A]/30 hover:bg-[#0A0A0A]/60'
+                                        }`}
+                                />
+                            ))}
+                        </div>
+
+                        <button
+                            onClick={next}
+                            className="w-10 h-10 border-2 border-[#0A0A0A]/30 flex items-center justify-center hover:bg-[#0A0A0A] hover:border-[#0A0A0A] hover:text-[#F5C518] transition-all duration-300"
+                            aria-label="Next testimonial"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
+                </motion.div>
             </div>
-
-            <div className="flex gap-1 mb-8">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <span key={i} className="text-golden text-xl">★</span>
-              ))}
-            </div>
-
-            <h2 className="text-3xl md:text-5xl font-black italic text-dark leading-tight mb-12">
-              "Working with Steve was a game-changer. His attention to detail and creative vision surpassed all our expectations."
-            </h2>
-
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-full bg-coral shadow-xl shadow-coral/20 border-4 border-white flex items-center justify-center text-white font-bold">FS</div>
-              <div>
-                <p className="text-2xl font-black text-dark">Funny Spencer</p>
-                <p className="text-coral font-bold uppercase tracking-widest text-sm">Design Director</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right: Awards / Trusted By */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-cream rounded-[4rem] p-12 md:p-20 relative"
-          >
-             <h4 className="text-dark/20 text-sm font-black tracking-[0.5em] uppercase mb-12 text-center">Awards & Recognition</h4>
-             
-             <div className="grid grid-cols-2 gap-12">
-               {awards.map((award, idx) => (
-                 <motion.div
-                   key={award.name}
-                   whileHover={{ scale: 1.1, y: -5 }}
-                   className="flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
-                 >
-                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-black mb-3 ${award.color} bg-white shadow-sm`}>
-                     {award.logo}
-                   </div>
-                   <span className={`text-sm font-bold uppercase tracking-wider ${award.color}`}>{award.name}</span>
-                 </motion.div>
-               ))}
-             </div>
-
-             {/* Background decoration */}
-             <div className="absolute top-0 right-0 w-32 h-32 bg-golden/5 rounded-full -mr-16 -mt-16 blur-2xl" />
-             <div className="absolute bottom-0 left-0 w-32 h-32 bg-coral/5 rounded-full -ml-16 -mb-16 blur-2xl" />
-          </motion.div>
-
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    )
 }
