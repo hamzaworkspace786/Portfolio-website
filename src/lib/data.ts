@@ -20,7 +20,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 // ─── Hero / Personal ────────────────────────────────────────
 export const PERSONAL = {
-    name: 'Your Name',           // ← replace
+    name: 'Hamza Akram',           // ← replace
     title: 'Full-Stack Developer',
     tagline: 'React · Next.js · Node.js',
     headline1: 'Building',
@@ -28,17 +28,17 @@ export const PERSONAL = {
     headline3: 'Web Apps.',
     location: 'Okara, Pakistan 🇵🇰',
     availability: true,
-    email: 'you@example.com',    // ← replace
+    email: 'hamzasworkspace1@example.com',    // ← replace
     fiverr: 'https://fiverr.com/your-username',
     upwork: 'https://upwork.com/freelancers/your-profile',
-    bio: `I'm a full-stack web developer specializing in React and Next.js, crafting fast, modern 
+    bio: `I'm a full-stack web developer specializing in React, Next.js, Node.js and Express.js crafting fast, modern 
         web applications for startups and businesses. From landing pages to complex SaaS products — 
         I deliver clean code, on time, with clear communication.`,
 }
 
 // ─── Stats ───────────────────────────────────────────────────
 export const STATS: Stat[] = [
-    { value: '6', suffix: '+', label: 'Months Experience' },
+    { value: '10', suffix: '+', label: 'Months Experience' },
     { value: '5', suffix: '+', label: 'Projects Shipped' },
     { value: '100', suffix: '%', label: 'Client Satisfaction' },
     { value: '24', suffix: 'h', label: 'Response Time' },
@@ -48,12 +48,12 @@ export const STATS: Stat[] = [
 export const SKILLS: Skill[] = [
     // Frontend
     { name: 'React.js', level: 85, category: 'frontend' },
-    { name: 'Next.js', level: 82, category: 'frontend' },
+    { name: 'Next.js', level: 89, category: 'frontend' },
     { name: 'TypeScript', level: 75, category: 'frontend' },
-    { name: 'Tailwind CSS', level: 90, category: 'frontend' },
+    { name: 'Tailwind CSS', level: 80, category: 'frontend' },
     { name: 'Framer Motion', level: 78, category: 'frontend' },
     // Backend
-    { name: 'Node.js', level: 80, category: 'backend' },
+    { name: 'Node.js', level: 84, category: 'backend' },
     { name: 'Express.js', level: 78, category: 'backend' },
     { name: 'MongoDB', level: 72, category: 'backend' },
     { name: 'REST APIs', level: 82, category: 'backend' },
@@ -88,11 +88,11 @@ export const PROJECTS: Project[] = [
       and shareable link feature. Built as a Final Year Project at University of Okara (BSIT).`,
         category: 'saas',
         techStack: ['Next.js', 'Liveblocks', 'WebRTC', 'Better Auth', 'Framer Motion', 'MongoDB', 'Tailwind'],
-        liveUrl: 'https://nexus.vercel.app',       // ← replace with your actual URL
-        githubUrl: 'https://github.com/you/nexus',   // ← replace
+        liveUrl: 'https://nexus-a-real-time-whiteboard.vercel.app/',       // ← replace with your actual URL
+        githubUrl: 'https://github.com/hamzaworkspace786/Nexus',   // ← replace
         image: '/projects/nexus.png',
         featured: true,
-        year: 2024,
+        year: 2026,
         status: 'live',
     },
     {
@@ -102,10 +102,10 @@ export const PROJECTS: Project[] = [
         category: 'frontend',
         techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
         liveUrl: '/',
-        githubUrl: 'https://github.com/you/portfolio',
+        githubUrl: 'https://github.com/hamzaworkspace786/Portfolio-website',
         image: '/projects/portfolio.png',
         featured: false,
-        year: 2025,
+        year: 2026,
         status: 'live',
     },
     {
@@ -118,7 +118,7 @@ export const PROJECTS: Project[] = [
         githubUrl: '#',
         image: '/projects/saas-landing.png',
         featured: false,
-        year: 2025,
+        year: 2026,
         status: 'live',
     },
     {
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
         githubUrl: '#',
         image: '/projects/ecommerce.png',
         featured: false,
-        year: 2025,
+        year: 2026,
         status: 'wip',
     },
 ]

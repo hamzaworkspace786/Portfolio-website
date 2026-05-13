@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { MapPin, GraduationCap, Briefcase, Download } from 'lucide-react'
 import { PERSONAL } from '@/lib/data'
@@ -8,7 +9,7 @@ import { PERSONAL } from '@/lib/data'
 const facts = [
     { icon: MapPin, label: 'Location', value: 'Okara, Punjab, Pakistan' },
     { icon: GraduationCap, label: 'Education', value: 'BSIT — University of Okara' },
-    { icon: Briefcase, label: 'Experience', value: '6–12 months (active)' },
+    { icon: Briefcase, label: 'Experience', value: '10–12 months (active)' },
 ]
 
 const fadeUp = (delay = 0) => ({
@@ -64,16 +65,7 @@ export default function About() {
                   Replace the div below with:
                   <Image src="/your-photo.jpg" alt="Your Name" fill className="object-cover" />
                 */}
-                                <div className="w-full h-full flex items-center justify-center flex-col gap-4 text-[#2A2A2A]">
-                                    <div className="w-24 h-24 rounded-full bg-[#2A2A2A] flex items-center justify-center">
-                                        <span className="font-display text-5xl text-[#F5C518]">
-                                            {PERSONAL.name.charAt(0)}
-                                        </span>
-                                    </div>
-                                    <p className="font-mono text-xs tracking-widest uppercase text-[#444]">
-                                        Add your photo here
-                                    </p>
-                                </div>
+                                <Image src="/hamza.jpg" alt="Your Name" fill className="object-cover" />
                             </div>
 
                             {/* ── Experience badge ── */}
@@ -83,12 +75,11 @@ export default function About() {
                                 transition={{ delay: 0.5, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] as const }}
                                 className="absolute -bottom-6 -right-6 bg-[#F5C518] text-[#0A0A0A] p-4 z-20"
                             >
-                                <p className="font-display text-5xl leading-none">6+</p>
+                                <p className="font-display text-5xl leading-none">10+</p>
                                 <p className="font-mono text-[10px] uppercase tracking-wider mt-1">months<br />experience</p>
                             </motion.div>
                         </div>
                     </motion.div>
-
                     {/* ── Right — text content ── */}
                     <motion.div
                         variants={fadeUp(0.2)}

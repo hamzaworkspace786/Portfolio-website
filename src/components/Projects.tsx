@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { ExternalLink, ArrowUpRight } from 'lucide-react'
 import { PROJECTS } from '@/lib/data'
 import type { ProjectCategory } from '@/types'
+import Image from 'next/image'
 
 const FILTERS: { label: string; value: ProjectCategory }[] = [
     { label: 'All', value: 'all' },
@@ -111,16 +112,7 @@ export default function Projects() {
                     Replace with actual project screenshot:
                     <Image src={project.image} alt={project.title} fill className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
                   */}
-                                    <div className="w-full h-full flex items-center justify-center">
-                                        <div className="text-center">
-                                            <span className="font-display text-[80px] text-[#2A2A2A] leading-none">
-                                                {project.title.charAt(0)}
-                                            </span>
-                                            <p className="font-mono text-xs text-[#444] uppercase tracking-widest mt-2">
-                                                Add screenshot to /public{project.image}
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <Image src={project.image} alt={project.title} fill className="object-cover object-top transition-transform duration-700 group-hover:scale-105" />
 
                                     {/* Dark gradient overlay */}
                                     <div className="project-overlay" />
@@ -212,7 +204,7 @@ export default function Projects() {
                     className="text-center mt-14"
                 >
                     <a
-                        href="https://github.com/you"
+                        href="https://github.com/hamzaworkspace786"
                         target="_blank"
                         rel="noreferrer"
                         className="btn-outline inline-flex items-center gap-2"

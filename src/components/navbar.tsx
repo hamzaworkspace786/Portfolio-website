@@ -43,8 +43,8 @@ export default function Navbar() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                        ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#2A2A2A]'
-                        : 'bg-transparent'
+                    ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#2A2A2A]'
+                    : 'bg-transparent'
                     }`}
             >
                 <div className="container">
@@ -53,9 +53,7 @@ export default function Navbar() {
                         <Link href="#home" className="flex items-center gap-3 group">
                             <div className="w-9 h-9 bg-[#F5C518] flex items-center justify-center transition-transform duration-300 group-hover:rotate-12">
                                 {/* Replace with your actual logo: <Image src="/logo.png" alt="Logo" width={36} height={36} /> */}
-                                <span className="font-display text-[#0A0A0A] text-lg leading-none select-none">
-                                    {PERSONAL.name.charAt(0)}
-                                </span>
+                                <Image src="/logo.png" alt="Logo" width={36} height={36} />
                             </div>
                             <span
                                 className="font-mono text-xs tracking-[0.2em] uppercase text-[#A0A0A0] group-hover:text-[#F5C518] transition-colors duration-300"
