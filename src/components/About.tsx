@@ -125,8 +125,8 @@ export default function About() {
                                 <span>Work With Me</span>
                             </a>
                             <a
-                                href="/resume.pdf"   /* ← add your CV to /public/resume.pdf */
-                                download
+                                href="/cv/resume.pdf"
+                                download="Hamza_Akram_Resume.pdf"
                                 className="btn-outline flex items-center gap-2"
                             >
                                 <Download size={14} />
