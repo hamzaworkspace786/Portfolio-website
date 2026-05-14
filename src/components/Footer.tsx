@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
+import Image from 'next/image'
 import { PERSONAL, NAV_ITEMS, SOCIAL_LINKS } from '@/lib/data'
 
 function SocialIcon({ icon }: { icon: string }) {
@@ -32,9 +33,7 @@ export default function Footer() {
                         {/* Logo */}
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-10 h-10 bg-[#F5C518] flex items-center justify-center">
-                                <span className="font-display text-xl text-[#0A0A0A]">
-                                    {PERSONAL.name.charAt(0)}
-                                </span>
+                                <Image src="/logo.png" alt="Logo" width={36} height={36} />
                             </div>
                             <div>
                                 <p className="font-display text-2xl text-[#F5F5F0] leading-none">{PERSONAL.name}</p>

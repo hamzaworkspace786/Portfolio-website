@@ -39,7 +39,7 @@ export const PERSONAL = {
 // ─── Stats ───────────────────────────────────────────────────
 export const STATS: Stat[] = [
     { value: '10', suffix: '+', label: 'Months Experience' },
-    { value: '5', suffix: '+', label: 'Projects Shipped' },
+    { value: '5', suffix: '+', label: 'Projects Deployed' },
     { value: '100', suffix: '%', label: 'Client Satisfaction' },
     { value: '24', suffix: 'h', label: 'Response Time' },
 ]
@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
         description: 'This very site — built with Next.js, Framer Motion, and custom design system.',
         category: 'frontend',
         techStack: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
-        liveUrl: '/',
+        liveUrl: 'https://portfolio-website-hyjt.vercel.app/',
         githubUrl: 'https://github.com/hamzaworkspace786/Portfolio-website',
         image: '/projects/portfolio.png',
         featured: false,
@@ -197,8 +197,7 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // ─── Social Links ────────────────────────────────────────────
 export const SOCIAL_LINKS: SocialLink[] = [
-    { name: 'GitHub', url: 'https://github.com/you', icon: 'github' },
+    { name: 'GitHub', url: 'https://github.com/hamzaworkspace786', icon: 'github' },
     { name: 'LinkedIn', url: 'https://linkedin.com/in/you', icon: 'linkedin' },
     { name: 'Fiverr', url: 'https://fiverr.com/you', icon: 'fiverr' },
-    { name: 'Twitter', url: 'https://twitter.com/you', icon: 'twitter' },
 ]
