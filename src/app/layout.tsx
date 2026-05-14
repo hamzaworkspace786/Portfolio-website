@@ -4,8 +4,8 @@ import './globals.css'
 // ── Metadata ───────────────────────────────────────────────
 export const metadata: Metadata = {
   title: {
-    default: 'Your Name — React & Next.js Developer',
-    template: '%s | Your Name',
+    default: 'Hamza Akram — React & Next.js Developer',
+    template: '%s | Hamza Akram',
   },
   description:
     'Full-stack web developer specializing in React, Next.js, and Node.js. Building fast, modern web apps for startups and businesses. Available for freelance work worldwide.',
@@ -14,50 +14,10 @@ export const metadata: Metadata = {
     'Freelance Web Developer', 'Node.js', 'TypeScript', 'Pakistan Developer',
     'Fiverr Developer', 'Web App Development', 'SaaS Development',
   ],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
-
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://yourportfolio.vercel.app',  // ← replace
-    title: 'Your Name — React & Next.js Developer',
-    description: 'Full-stack web developer building fast, modern web apps.',
-    siteName: 'Your Name Portfolio',
-    images: [
-      {
-        url: '/og-image.png',   // ← add a 1200×630 image to /public
-        width: 1200,
-        height: 630,
-        alt: 'Your Name — Portfolio',
-      },
-    ],
-  },
-
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Your Name — React & Next.js Developer',
-    description: 'Full-stack web developer building fast, modern web apps.',
-    images: ['/og-image.png'],
-    creator: '@yourhandle',  // ← replace
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-
+  authors: [{ name: 'Hamza Akram' }],
+  creator: 'Hamza Akram',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/logo.png',
   },
 }
 
