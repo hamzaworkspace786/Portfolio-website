@@ -198,6 +198,6 @@ export const TESTIMONIALS: Testimonial[] = [
 // ─── Social Links ────────────────────────────────────────────
 export const SOCIAL_LINKS: SocialLink[] = [
     { name: 'GitHub', url: 'https://github.com/hamzaworkspace786', icon: 'github' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/you', icon: 'linkedin' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/hamzaakram786', icon: 'linkedin' },
     { name: 'Fiverr', url: 'https://fiverr.com/you', icon: 'fiverr' },
 ]
